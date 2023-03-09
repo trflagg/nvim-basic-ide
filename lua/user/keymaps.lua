@@ -2,10 +2,57 @@
 local keymap = vim.keymap.set
 -- Silent keymap option
 local opts = { silent = true }
+local silent = { silent = true }
+local noremap = { noremap = true }
+local noremapAndSilent = { silent = true, noremap = true }
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
+
+-- Taylor's:
+-- remap escape to jk
+keymap("i", "jk", "<ESC>", noremap)
+
+keymap("n", "B", "^", noremap)
+keymap("n", "E", "$", noremap)
+
+-- tmux movement
+keymap("n", "<c-j>", "<c-w>j", noremap)
+keymap("n", "<c-h>", "<c-w>h", noremap)
+keymap("n", "<c-k>", "<c-w>k", noremap)
+keymap("n", "<c-l>", "<c-w>l", noremap)
+--
+-- handy rename
+keymap('n', '<leader>rn', '"zye:%s/<C-R>z/')
+
+-- console log
+keymap('n', '<leader>cl', "zyeoconsole.log(`taylor  <esc>Pa: ${JSON.stringify(<esc>pa, null, ' ')}`);<esc>")
+keymap('n', '<leader>cc', "oconsole.log(`taylor `);<esc>F`i")
+
+-- edit and source prefs files
+keymap("n", "<leader>ei", ":e ~/.config/nvim/lua/user<CR>")
+keymap("n", "<leader>ek", ":e ~/.config/nvim/lua/user/keymaps.lua<CR>")
+keymap("n", "<leader>ep", ":e ~/.config/nvim/lua/user/plugins.lua<CR>")
+keymap("n", "<leader>s", ":source %<CR>")
+
+-- Remove highlights
+keymap("n", "<ESC>", ":noh<CR><CR>", silent)
+
+-- Buffers
+keymap("n", "<Tab>", ":b#<CR>", silent)
+
+-- Toggle quicklist
+keymap("n", "<leader>q", "<cmd>lua require('utils').toggle_quicklist()<CR>", silent)
+
+-- enter goyo
+keymap("n", "<leader>gy", ":Goyo<CR>", silent)
+
+-- change background
+keymap("n", "<leader>ll", ":set background=light<CR>");
+keymap("n", "<leader>dd", ":set background=dark<CR>");
+
+-- end Taylor
 
 -- Modes
 --   normal_mode = "n",
