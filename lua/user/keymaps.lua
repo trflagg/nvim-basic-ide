@@ -51,6 +51,26 @@ keymap("n", "<leader>gy", ":Goyo<CR>", silent)
 -- change background
 keymap("n", "<leader>ll", ":set background=light<CR>");
 keymap("n", "<leader>dd", ":set background=dark<CR>");
+--
+-- Telescope
+keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+
+keymap("n", "<C-p>", "<CMD>lua require('telescope.builtin').git_files()<CR>")
+keymap("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>")
+keymap("n", "<leader>fs", "<CMD>lua require('telescope.builtin').grep_string()<CR>")
+keymap("n", "<leader>fr", "<CMD>lua require('telescope.builtin').references()<CR>")
+keymap("n", "<leader>fd", "<CMD>lua require('telescope.builtin').lsp_document_symbols()<CR>")
+keymap("n", "<leader>fi", "<CMD>lua require('telescope.builtin').lsp_implementation()<CR>")
+keymap("n", "<leader>fe", "<CMD>lua require('telescope.builtin').diagnostics()<CR>")
+keymap("n", "<leader>ft", "<CMD>lua require('telescope.builtin').treesitter()<CR>")
+keymap("n", "<leader>ff", "<CMD>lua require('telescope.builtin').buffers()<CR>")
+keymap("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
+keymap("n", "<leader><leader>", "<CMD>lua require('telescope.builtin').buffers()<CR>")
+keymap("n", "<leader>fo", "<CMD>lua require('telescope.builtin').oldfiles()<CR>")
+keymap("n", "<leader>fq", "<CMD>lua require('telescope.builtin').quickfix()<CR>")
+keymap("n", "<leader>f<leader>", [[<Cmd>lua require('telescope.builtin').resume()<CR>]], noremapAndSilent)
+keymap("i", "<C-q>", "<CMD>lua actions.smart_add_to_qflist + actions.open_qflist<CR>");
+
 
 -- end Taylor
 
